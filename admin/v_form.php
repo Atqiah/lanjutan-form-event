@@ -5,7 +5,7 @@ if (isset($_GET['Id'])){
 	$url ="proses_edit.php";
 	$id = $_GET['Id'];
     //buat query untuk ambil data dari database
-    $sql ="SELECT * FROM admin WHERE Id= $id";
+    $sql ="SELECT * FROM admin WHERE Id = $id";
 	$query = mysqli_query ($koneksi,$sql);
 	$admin = mysqli_fetch_assoc ($query);
 	//jika data yang diedit tidak ditemukan
@@ -19,17 +19,12 @@ if (isset($_GET['Id'])){
 	}
 	?>
 	<html>
-	<head><title> Formulir Edit</title></head>
+	<head><title> Formulir event</title></head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<body>
-	<form action ="proses_edit.php" method = "POST">
+	<form action ="proses_pendaftaran.php" method = "POST">
 	<fieldset>
-	<legend><h2>Form Edit </h2></legend>
-	<div>
-		<label for ='Id'>Id :</label><br>
-		<input type ="text" name ="Id" value =" <?php if (isset($_GET['Id']))
-		{echo $admin['Id'];} ?> "/>
-	</div>
+		<legend><h2>Form Pendaftaran</h2></legend>
 	<div>
 		<label for ='Nama'>Nama :</label><br>
 		<input type ="text" name ="Nama" value =" <?php if (isset($_GET['Id']))
@@ -41,17 +36,18 @@ if (isset($_GET['Id'])){
 		{echo $admin['Email'];} ?> "/>
 	</div>
 	<div>
-	<label for ='tanggal_lahir'>Tanggal Lahir: </label><br>
-	<input type ="date" name ="Tanggal_lahir" value ="<?php if (isset($_GET['Id'])) 
-	{echo $admin['Tanggal_lahir'];}?>"/>
+	<label for ='Tanggal_lahir'>Tanggal lahir :</label><br>
+		<input type ="date" name ="Tanggal_lahir" value =" <?php if (isset($_GET['Id'])) 
+		{echo $admin['Tanggal_lahir'];} ?> "/>
+	</div>
 	<div>
-	<label for ="Alamat">Alamat: </label><br>
-	<input type = "text" name ="Alamat" value ="<?php if (isset($_GET['Id']))
-		{echo $admin['Alamat'];}?>"/>
+		<label for = 'Alamat'>Alamat: </label><br>
+		<textarea name ="Alamat" row = "5"> <?php if (isset($_GET['Id']))
+		{echo $admin['Alamat'];} ?> </textarea>
 	</div>
 	<hr>
 	<div>
-	<input type ="submit" value ="simpan" name ="simpan"/>
+	<input type ="submit" value ="simpan" name = "simpan" name ="simpan"/>
 	</div>
 	</fieldset>
 	</form></body></html>
